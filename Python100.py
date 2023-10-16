@@ -19,3 +19,4 @@ def giaithua(n=int(input("Chọn số tính giai thừa : ")),result=1):
     else:
         return result
 
+# Test
