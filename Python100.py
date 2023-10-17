@@ -142,3 +142,69 @@ class baitap8:
 # Viết chương trình và in giá trị theo công thức cho trước: Q = √([(2 * C * D)/H]) (bằng chữ: Q bằng căn bậc hai của [(2 nhân C nhân D) chia H]. Với giá trị cố định của C là
 # 50, H là 30. D là dãy giá trị tùy biến, được nhập vào từ giao diện người dùng, các giá trị của D được phân cách bằng dấu phẩy.
 # Ví dụ: Giả sử chuỗi giá trị của D nhập vào là 100,150,180 thì đầu ra sẽ là 18,22,24.
+
+import math as m
+def baitap9(D,C=50,H=30):
+    # D = str(input("Nhập D : "))
+    return ",".join([str(round(m.sqrt((2*C*float(d))/H))) for d in D.split(",")])
+
+
+# --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+# B10
+# Viết một chương trình có 2 chữ số, X, Y nhận giá trị từ đầu vào và tạo ra một mảng 2 chiều. 
+# Giá trị phần tử trong hàng thứ i và cột thứ j của mảng phải là i*j. 
+# Lưu ý: i=0,1,...,X-1; j=0,1,...,Y-1. 
+# Ví dụ: Giá trị X, Y nhập vào là 3,5 thì đầu ra là: [[0, 0, 0, 0, 0], [0, 1, 2, 3, 4], [0, 2, 4, 6, 8]]
+
+def baitap10(X,Y):
+    return [[y*x for y in range(Y)] for x in range(X)]
+
+# --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+# B11
+# Viết một chương trình chấp nhận chuỗi từ do người dùng nhập vào, phân tách nhau bởi dấu phẩy và in những từ đó thành chuỗi theo thứ tự bảng chữ cái, phân tách nhau bằng dấu phẩy. 
+# Giả sử đầu vào được nhập là: without,hello,bag,world, thì đầu ra sẽ là: bag,hello,without,world.
+
+def baitap11(baiTap11Value):
+    # baiTap11Value=str(input("Nhập chuỗi : "))
+    result = baiTap11Value.split(",")
+    result.sort()
+    return ",".join(result)
+print(baitap11())
+
+# Lời giải
+# items=[x for x in input("Nhập một chuỗi: ").split(',')] 
+# items.sort() 
+# print(','.join(items))
+
+# --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+# B12
+# Viết một chương trình chấp nhận chuỗi là các dòng được nhập vào, chuyển các dòng này thành chữ in hoa và in ra màn hình. 
+# Giả sử đầu vào là: 
+# Hello world 
+# Practice makes perfect 
+# Thì đầu ra sẽ là: 
+# HELLO WORLD 
+# PRACTICE MAKES PERFECT
+
+def baitap12():
+    lines = [] 
+    while True: 
+        s = input() 
+        # s luôn true khi có input được nhập vào > nhập được nhiều dòng , mỗi dòng đó sẽ ăn vào lines
+        # Khi bấm tiếp enter , không có chuỗi được nhập > False , thoát khỏi while loop
+        if s: 
+            lines.append(s.upper()) 
+        else: 
+            break
+    [print(line.upper()) for line in lines]
+
+
+# --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+# B13
+# Viết một chương trình chấp nhận đầu vào là một chuỗi các từ tách biệt bởi khoảng trắng, loại bỏ các từ trùng lặp, sắp xếp theo thứ tự bảng chữ cái, rồi in chúng. 
+# Giả sử đầu vào là: hello world and practice makes perfect and hello world again 
+# Thì đầu ra là: again and hello makes perfect practice world
+
+def baitap13():
+    line = str(input("Nhập chuỗi trắng :")).split(" ")
+    return " ".join(sorted(set(line)))
