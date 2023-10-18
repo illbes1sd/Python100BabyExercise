@@ -169,7 +169,7 @@ def baitap11(baiTap11Value):
     result = baiTap11Value.split(",")
     result.sort()
     return ",".join(result)
-print(baitap11())
+
 
 # Lời giải
 # items=[x for x in input("Nhập một chuỗi: ").split(',')] 
@@ -208,3 +208,94 @@ def baitap12():
 def baitap13():
     line = str(input("Nhập chuỗi trắng :")).split(" ")
     return " ".join(sorted(set(line)))
+
+
+# --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+# B14
+# Viết một chương trình chấp nhận đầu vào là chuỗi các số nhị phân 4 chữ số, phân tách bởi dấu phẩy, kiểm tra xem chúng có chia hết cho 5 không. 
+# Sau đó in các số chia hết cho 5 thành dãy phân tách bởi dấu phẩy. 
+# Ví dụ đầu vào là: 0100,0011,1010,1001 Đầu ra sẽ là: 1010
+
+def baitap14(baiTap14):
+    return  ",".join([x for x in baiTap14.split(",") if int(x,2)%5==0])
+
+
+# --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+# B15
+# Viết một chương trình tìm tất cả các số trong đoạn 1000 và 3000 (tính cả 2 số này) sao cho tất cả các chữ số trong số đó là số chẵn. 
+# In các số tìm được thành chuỗi cách nhau bởi dấu phẩy, trên một dòng.
+
+def baitap15(min,max):
+    return ",".join([str(x) for x in range(min,max+1) if len([y for y in str(x) if int(y) in [0,2,4,6,8]])==4])
+
+
+# --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+# B16
+# Viết một chương trình chấp nhận đầu vào là một câu, đếm số chữ cái và chữ số trong câu đó. 
+# Giả sử đầu vào sau được cấp cho chương trình: hello world! 123 
+# Thì đầu ra sẽ là: Số chữ cái là: 10 Số chữ số là: 3
+
+def baitap16(input):
+    return f'''
+Số chữ cái là : {len([x for x in [*input] if x.isalpha()])}
+Số chữ số là : {len([x for x in [*input] if x.isnumeric()])}'''
+
+
+# --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+# B17
+# Viết một chương trình chấp nhận đầu vào là một câu, đếm chữ hoa, chữ thường.
+# Giả sử đầu vào là: Quản Trị Mạng
+# Thì đầu ra là:
+# Chữ hoa: 3
+# Chữ thường: 8
+
+def baitap17(input):
+    return f'''
+Số chữ Hoa là : {len([x for x in [*input] if x.isalpha() and x.isupper()])}
+Số chữ Thường là : {len([x for x in [*input] if x.isalpha() and x.islower()])}'''
+
+
+# --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+# B18
+# Viết một chương trình tính giá trị của a+aa+aaa+aaaa với a là số được nhập vào bởi 
+# người dùng.
+# Giả sử a được nhập vào là 1 thì đầu ra sẽ là: 1234
+
+def baitap18(input):
+    return "".join([str(int(input)*x) for x in range(1,5)])
+
+
+# --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+# B19
+# Sử dụng một danh sách để lọc các số lẻ từ danh sách được người dùng nhập vào.
+# Giả sử đầu vào là: 1,2,3,4,5,6,7,8,9 thì đầu ra phải là: 1,3,5,7,9
+
+def baitap19(input):
+    return ",".join([str(x) for x in input.split(",") if int(x)%2])
+
+
+# --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+# B20
+# Viết chương trình tính số tiền thực của một tài khoản ngân hàng dựa trên nhật ký
+# giao dịch được nhập vào từ giao diện điều khiển.
+# Định dạng nhật ký được hiển thị như sau:
+# D 100
+# W 200
+# (D là tiền gửi, W là tiền rút ra).
+# Giả sử đầu vào được cung cấp là:
+# D 300
+# D 300
+# W 200
+# D 100
+# Thì đầu ra sẽ là:
+# 500
+
+def baitap20():
+    history = []
+    while True:
+        duLieu =  input() 
+        if duLieu:
+            history.append(duLieu)
+        else:
+            break
+    return sum([int(x.split(" ")[1]) if x.split(" ")[0] == "D" else 0-int(x.split(" ")[1]) for x in history])
