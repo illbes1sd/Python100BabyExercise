@@ -299,3 +299,274 @@ def baitap20():
         else:
             break
     return sum([int(x.split(" ")[1]) if x.split(" ")[0] == "D" else 0-int(x.split(" ")[1]) for x in history])
+
+
+# --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+# B21
+# Một website yêu cầu người dùng nhập tên người dùng và mật khẩu để đăng ký. 
+# Viết chương trình để kiểm tra tính hợp lệ của mật khẩu mà người dùng nhập vào. 
+# Các tiêu chí kiểm tra mật khẩu bao gồm:
+
+# 1. Ít nhất 1 chữ cái nằm trong [a-z] 
+# 2. Ít nhất 1 số nằm trong [0-9] 
+# 3. Ít nhất 1 kí tự nằm trong [A-Z] 
+# 4. Ít nhất 1 ký tự nằm trong [$ # @] 
+# 5. Độ dài mật khẩu tối thiểu: 6 
+# 6. Độ dài mật khẩu tối đa: 12 
+
+# Chương trình phải chấp nhận một chuỗi mật khẩu phân tách nhau bởi dấu phẩy và kiểm tra xem chúng có đáp ứng những tiêu chí trên hay không. 
+# Mật khẩu hợp lệ sẽ được in, mỗi mật khẩu cách nhau bởi dấu phẩy. 
+# Ví dụ mật khẩu nhập vào chương trình là: ABd1234@1,a F1#,2w3E*,2We3345 Thì đầu ra sẽ là: ABd1234@1
+import re
+def baitap21(passwords):
+    return ",".join([password for password in passwords.split(",") 
+                     if 
+                        re.findall(pattern=r"[a-z]",string=password) and 
+                        re.findall(pattern=r"[A-Z]",string=password) and 
+                        re.findall(pattern=r"[0-9]",string=password) and 
+                        re.findall(pattern=r"[$#@]",string=password) and
+                        not re.findall(pattern=r"[\s]",string=password) and
+                        6<= len(password) <=12
+                        ])
+
+# --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+# B22
+# Viết chương trình sắp xếp tuple (name, age, score) theo thứ tự tăng dần, name là string, age và height là number. 
+# Tuple được nhập vào bởi người dùng. 
+# Tiêu chí sắp xếp là:
+# Sắp xếp theo name sau đó sắp xếp theo age, sau đó sắp xếp theo score. Ưu tiên là
+# tên > tuổi > điểm.
+# Nếu đầu vào là:
+# Tom,19,80
+# John,20,90
+# Jony,17,91
+# Jony,17,93
+# Json,21,85
+# Thì đầu ra sẽ là:
+# [('John', '20', '90'), ('Jony', '17', '91'), ('Jony', '17', '93'), ('Json', '21', '85'), ('Tom', '19',
+# '80')]
+
+def baitap22():
+    result = []
+    while True:
+        profile = input("")
+        if profile:
+            result.append(tuple(profile.split(",")))
+        else:
+            break
+    return sorted(result,key=lambda x: x[0] and x[1] and x[2]) 
+
+
+# Lời giải
+# from operator import itemgetter, attrgetter
+# Bài tập Python 22 Code by Quantrimang.com
+# l = []
+# while True:
+# s = input()
+# if not s:
+#   break
+# l.append(tuple(s.split(",")))
+# print (sorted(l, key=itemgetter(0,1,2)))
+
+
+# --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+# B23
+# Xác định một class với generator có thể lặp lại các số nằm trong khoảng 0 và n, và chia hết cho 7.
+
+def baitap23(n):
+    for x in range(n+1):
+        if not x%7:
+            yield x
+
+
+# --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+# B24
+# Một Robot di chuyển trong mặt phẳng bắt đầu từ điểm đầu tiên (0,0). 
+# Robot có thể di chuyển theo hướng UP, DOWN, LEFT và RIGHT với những bước nhất định. Dấu di chuyển của robot được đánh hiển thị như sau:
+# UP 5
+# DOWN 3
+# LEFT 3
+# RIGHT 3
+# Các con số sau phía sau hướng di chuyển chính là số bước đi. 
+# Hãy viết chương trình để tính toán khoảng cách từ vị trí hiện tại đến vị trí đầu tiên, sau khi robot đã di chuyển một quãng đường. 
+# Nếu khoảng cách là một số thập phân chỉ cần in só nguyên gần nhất.
+# Ví dụ: Nếu tuple sau đây là input của chương trình:
+# UP 5
+# DOWN 3
+# LEFT 3
+# RIGHT 2
+# thì đầu ra sẽ là 2
+
+def baitap24():
+    vault = []
+    while True:
+        step = input()
+        if not step:
+            break
+        vault.append(step.split(" "))
+    x = sum([int(data[1]) if data[0] == "UP" else -int(data[1]) for data in vault if data[0] in ["UP","DOWN"]])
+    y = sum([int(data[1]) if data[0] == "RIGHT" else -int(data[1]) for data in vault if data[0] in ["LEFT","RIGHT"]])
+    return int(round(m.sqrt(x**2+y**2)))
+    # Pytago
+
+# --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+# B25
+# Viết chương trình tính tần suất các từ từ input. 
+# Output được xuất ra sau khi đã sắp xếp theo bảng chữ cái.
+# Giả sử input là: New to Python or choosing between Python 2 and Python 3? Read Python 2 or Python 3.
+# Thì output phải là:
+# 2:2
+# 3.:1
+# 3?:1
+# New:1
+# Python:5
+# Read:1
+# and:1
+# between:1
+# choosing:1
+# or:2
+# to:1
+
+def baitap25(inputVal):
+    return "\n".join(sorted([f"{x}:{inputVal.split(' ').count(x)}" for x in set(inputVal.split(" "))]))
+
+# Lời giải
+# freq = {} # frequency of words in text
+# line = input()
+# for word in line.split():
+#   freq[word] = freq.get(word,0)+1
+# # Bài tập Python 25 Code by Quantrimang.com
+# words = sorted(freq.keys())
+# for w in words:
+#   print ("%s:%d" % (w,freq[w]))
+
+# --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+# B26
+# Định nghĩa 1 hàm có thể tính tổng hai số.
+
+def baitap26(num1,num2):
+    return num1+num2
+
+
+# --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+# B27
+# Định nghĩa một hàm có thể chuyển số nguyên thành chuỗi và in nó ra giao diện điều khiển
+
+def baitap27(num):
+    print(str(num))
+
+
+# --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+# B28
+# Định nghĩa hàm có thể nhận hai số nguyên trong dạng chuỗi và tính tổng của chúng, sau đó in tổng ra giao diện điều khiển.
+
+def baitap28(num1,num2):
+    print(int(num1)+int(num2))
+
+
+# --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+# B29
+# Định nghĩa hàm có thể nhận 2 chuỗi từ input và nối chúng sau đó in ra giao diện điều khiển
+
+def baitap29(string1,string2):
+    print(string1+string2)
+
+
+# --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+# B30
+# Định nghĩa một hàm có input là 2 chuỗi và in chuỗi có độ dài lớn hơn trong giao diện điều khiển. Nếu 2 chuỗi có chiều dài như nhau thì in tất cả các chuỗi theo dòng.
+
+def baitap30(str1,str2):
+    print(str1 if len(str1)>len(str2) else str2 if len(str2)>len(str1) else f'{str1}\n{str2}')
+
+
+# --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+# B31
+# Định nghĩa hàm có thể chấp nhận input là số nguyên và in "Đây là một số chẵn" nếu nó chẵn và in "Đây là một số lẻ" nếu là số lẻ
+
+def baitap31(inputs):
+    print("Đây là một số chẵn" if not inputs%2 else "Đây là một số lẻ")
+
+
+# --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+# B32
+# Định nghĩa một hàm có thể in dictionary chứa key là các số từ 1 đến 3 (bao gồm cả hai số) và các giá trị bình phương của chúng.
+
+def baitap32():
+    print({f'{x}':x**2 for x in range(1,4)})
+
+
+# --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+# B33
+# Định nghĩa một hàm có thể in dictionary chứa các key là số từ 1 đến 20 (bao gồm cả 1 và 20) và các giá trị bình phương của chúng.
+
+def baitap33():
+    print({f'{x}':x**2 for x in range(1,21)})
+
+
+# --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+# B34
+# Định nghĩa một hàm có thể tạo dictionary, chứa các key là số từ 1 đến 20 (bao gồm cả 1 và 20) và các giá trị bình phương của chúng. Hàm chỉ in các giá trị mà thôi.
+
+def baitap34():
+    print(*{f'{x}':x**2 for x in range(1,21)}.values())
+
+
+# --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+# B35
+# Định nghĩa một hàm có thể tạo ra một dictionary chứa key là những số từ 1 đến 20 (bao gồm cả 1 và 20) và các giá trị bình phương của key. Hàm chỉ cần in các key.
+
+
+def baitap35():
+    print(*{f'{x}':x**2 for x in range(1,21)}.keys())
+
+
+# --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+# B36
+# Định nghĩa một hàm có thể tạo và in list chứa các giá trị bình phương của các số từ 1 đến 20 (tính cả 1 và 20).
+
+def baitap36():
+    print([x**2 for x in range(1,21)])
+
+
+# --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+# B37
+# Định nghĩa một hàm có thể tạo list chứa các giá trị bình phương của các số từ 1 đến 20 (bao gồm cả 1 và 20) và in 5 mục đầu tiên trong list.
+
+def baitap37():
+    print([x**2 for x in range(1,21)][:5])
+
+
+# --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+# B38
+# Định nghĩa một hàm có thể tạo ra list chứa các giá trị bình phương của các số từ 1 đến 20 (bao gồm cả 1 và 20), rồi in 5 mục cuối cùng trong list.
+
+def baitap38():
+    print([x**2 for x in range(1,21)][-5:])
+
+
+# --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+# B39
+# Định nghĩa một hàm có thể tạo list chứa giá trị bình phương của các số từ 1 đến 20 (bao gồm cả 1 và 20). Sau đó in tất cả các giá trị của list, trừ 5 mục đầu tiên.
+
+def baitap39():
+    print([x**2 for x in range(1,21)][5:])
+
+
+# --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+# B40
+# Định nghĩa 1 hàm có thể tạo và in một tuple chứa các giá trị bình phương của các số từ 1 đến 20 (tính cả 1 và 20).
+
+def baitap40():
+    print(tuple(x**2 for x in range(1,21)))
+
+
+# --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+# B41
+# Với tuple (1,2,3,4,5,6,7,8,9,10) cho trước, viết một chương trình in một nửa số giá trị đầu tiên trong 1 dòng và 1 nửa số giá trị cuối trong 1 dòng.
+
+def baitap41(tup=(1,2,3,4,5,6,7,8,9,10)):
+    print(tup[:int(round(len(tup)/2))],end="\n")
+    print(tup[int(round(len(tup)/2)):])
+
+
