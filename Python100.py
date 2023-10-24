@@ -692,4 +692,168 @@ def baitap49():
     
 
 # --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+# B53
+# Định nghĩa class có tên là Hinhchunhat được xây dựng bằng chiều dài và chiều rộng. 
+# Class Hinhchunhat có method để tính diện tích.
+
+# class Hinhchunhat:
+#     def __init__(self,dai,rong) -> None:
+#         self.dai=dai
+#         self.rong = rong
+#     def tinhdientich(self):
+#         return self.dai*self.rong 
+
+
+# --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+# B54
+# Định nghĩa một class có tên là Shape và class con là Square. 
+# Square có hàm init để lấy đối số là chiều dài. 
+# Cả 2 class đều có hàm area để in diện tích của hình, diện tích mặc định của Shape là 0.
+
+# class Shape:
+#     def __init__(self):
+#         pass
+#     def area(self):
+#         return 0
+# class Square(Shape):
+#     def __init__(self,chieudaicanh):
+#         super().__init__()
+#         self.chieudaicanh = chieudaicanh
+#     def area(self):
+#         return self.chieudaicanh**2
+
+
+# --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+# B55
+# Đưa ra một RuntimeError exception.
+
+def baitap55():
+    try:
+        raise RuntimeError(False,"args1")
+    except RuntimeError as e:
+        pass
+        # print(e.args[0] or e.args[1]) > args1
+
+# Lời giải
+# class RuntimeError(Exception):
+#     def __init__(self, mismatch):
+#         Exception.__init__(self, mismatch)
+# try:
+#     print ("And now, the Vocational Guidance Counsellor Sketch.")
+#     raise RuntimeError("Does not have proper hat")
+#     print ("This print statement will not be reached.")
+# except RuntimeError as problem:
+#     print ("Vocation problem: {0}".format(problem))
+
+
+# --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+# B56
+# Viết hàm để tính 5/0 và sử dụng try/exception để bắt lỗi.
+
+def baitap56():
+    try:
+        a = 5/0
+    except Exception as e:
+        print(e)
+
+
+# --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+# B57
+# Định nghĩa một class exception tùy chỉnh, nhận một thông báo là thuộc tính.
+
+# class MyError(Exception):
+#     def __init__(self, message: str):
+#         super().__init__(message)
+#     # a =  Exception("123") = MemoryError("123") > print(a) > 123
+
+
+# --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+# B58 + B59
+# Giả sử rằng chúng ta có vài địa chỉ email dạng username@companyname.com.
+# Hãy viết một chương trình để in username của địa chỉ email cụ thể. 
+# Cả username và companyname chỉ bao gồm chữ cái.
+
+# B59
+# Tương tự như bài 58, nhưng lần này ta sẽ viết hàm để lấy companyname
+
+def baitap5859(*inputs):
+    return [
+        print(f'username:{z.split("@")[0]},companyname:{z.split("@")[1].split(".")[0]}') 
+        for z in [y for y in inputs] if "@" in z and list(z).count("@") == 1
+    ]
+
+
+# --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+# B60
+# Viết một chương trình chấp nhận chuỗi từ được phân tách bằng khoảng trống và in các từ chỉ gồm chữ số.
+# Ví du: Nếu những từ sau đây là đầu vào của chương trình: 3 quantrimang.com và 2 python. Đầu ra sẽ là ['3', '2']
+import re
+def baitap60(input):
+    # return [z for z in input if re.match(r'\d',z)] cách 1
+    return re.findall(r'\d',input) #cách 2
+
+
+# --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+# B61
+# In chuỗi Unicode "Hello world"
+
+def baitap61():
+    print(u'Hello world')
+
+
+# --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+# B62
+# Viết chương trình để đọc chuỗi ASCII và chuyển đổi nó sang một chuỗi Unicode được mã hóa bằng UTF-8.
+
+def baitap62(input):
+    print(input.encode(encoding="utf-8"))
+
+
+# --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+# B63
+# Viết comment đặc biệt để chỉ định file code nguồn Python ở Unicode.
+# ??
+
+
+# --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+# B64
+# Viết một chương trình tính 1/2 + 2/3 + 3/4 + ... + n/(n + 1) với một n là số được nhập
+# vào (n> 0).
+# Ví dụ, nếu n là số sau đây được nhập vào:
+# 5
+# Thì đầu ra phải là:
+# 3.55
+
+def baitap64(n):
+    return round(sum([x/(x+1) for x in range(1,n+1)]),2)
+
+
+# --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+# B65
+# Viết chương trình tính: f(n)=f(n-1)+100 khi n>0 và f(0)=0, với n là số được nhập vào (n>0).
+# Ví dụ: Nếu n được nhập vào là 5 thì đầu ra phải là 500
+
+def baitap65(n: int):
+    if int(n) !=0:
+        return baitap65(int(n)-1) + 100
+    else:
+        return 0
+
+
+# --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+# B66
+# Dãy Fibonacci được tính dựa trên công thức sau:
+# f(n)=0 nếu n=0
+# f(n)=1 nếu n=1
+# f(n)=f(n-1)+f(n-2) nếu n>1
+# Hãy viết chương trình tính giá trị của f(n) với n là số được người dùng nhập vào. 
+# Ví dụ: Nếu n được nhập vào là 7 thì đầu ra của chương trình sẽ là 13.
+
+def baitap66(n:int):
+    if n ==0:
+        return 0
+    elif n==1:
+        return 1
+    else:
+        return baitap66(n-1) + baitap66(n-2)
 
