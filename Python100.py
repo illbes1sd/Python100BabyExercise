@@ -569,4 +569,127 @@ def baitap41(tup=(1,2,3,4,5,6,7,8,9,10)):
     print(tup[:int(round(len(tup)/2))],end="\n")
     print(tup[int(round(len(tup)/2)):])
 
+# --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+# B42
+# Viết một chương trình để tạo tuple khác, chứa các giá trị là số chẵn trong tuple (1,2,3,4,5,6,7,8,9,10) cho trước
+
+def baitap42(input):
+    return (x for x in input if not x%2)
+
+# --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+# B43
+# Viết một chương trình để tạo ra và in tuple chứa các số chẵn được lấy từ tuple (1,2,3,4,5,6,7,8,9,10).
+
+def baitap42(input):
+    return tuple(x for x in input if not x%2)
+
+
+# --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+# B44
+# Viết một chương trình Python nhận chuỗi nhập vào bởi người dùng, in "Yes" nếu chuỗi là "yes" hoặc "YES" hoặc "Yes", nếu không in "No".
+
+def baitap44():
+    while True:
+        a = input("")
+        if a in ["YES",'yes','Yes']:
+            print("Yes")
+        else:
+            print("No")
+
+
+# --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+# B45
+# Viết chương trình Python có thể lọc các số chẵn trong danh sách sử dụng hàm filter.
+# Danh sách là [1,2,3,4,5,6,7,8,9,10].
+
+def baitap45(input):
+    return list(filter(lambda x: not x%2,input))
+
+
+# --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+# B46
+# Viết chương trình Python dùng map() để tạo list chứa các giá trị bình phương của các số trong [1,2,3,4,5,6,7,8,9,10].
+
+def baitap46(input):
+    return list(map(lambda x: x**2,input))
+
+
+# --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+# B47
+# Viết chương trình Python dùng map() và filter() để tạo list chứa giá trị bình phương của các số chẵn trong [1,2,3,4,5,6,7,8,9,10].
+
+def baitap47(input):
+    return list(filter(lambda y: not y%2,map(lambda x: x**2,input))) or list(map(lambda y: y**2,map(lambda x: not x&2,input)))
+
+
+# --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+# B48
+# Viết chương trình Python dùng filter() để tạo danh sách chứa các số chẵn trong đoạn [1,20].
+
+def baitap48(input):
+    return list(filter(lambda y: not y%2,range(1,21)))
+
+
+
+# --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+# B49
+# Viết chương trình Python sử dụng map() để tạo list chứa giá trị bình phương của các số trong đoạn [1,20].
+
+def baitap49():
+    return list(map(lambda y: y**2,range(1,21)))
+
+
+# --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+# B50
+# Định nghĩa một class có tên là Vietnam, với static method là printNationality. ( Static method là method gọi trực tiếp từ class mà không cần instance)
+
+# class Vietnam:
+#     # Static attribute
+#     bro = 345
+#     def __init__(self) -> None:
+#         self.bro = 123
+#     @staticmethod 
+#     def printNationality(): # không cần Self trong agrs
+#         print(Vietnam.bro)
+#     # Vietnam.printNationality() > 345
+#     # a = Vietnam().bro
+#     # print(a) > 123
+
+
+# --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+# B51
+# Định nghĩa một class tên Vietnam và class con của nó là Hanoi.
+
+# class Vietnam:
+#     # Static attribute
+#     bro = 345
+#     def __init__(self) -> None:
+#         self.bro = 123
+#     @staticmethod 
+#     def printNationality(): # không cần Self trong agrs
+#         print(Vietnam.bro)
+#     # Vietnam.printNationality() > 345
+
+# class Hanoi(Vietnam):
+#     def __init__(self) -> None:
+#         super().__init__()
+#         # Nạp đạn từ class mẹ 
+#     @staticmethod
+#     def printNationality():
+#         print(Hanoi.bro) 
+#     # ghi đè lên static method cũ
+
+
+# --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+# B52
+# Định nghĩa một class có tên là Circle có thể được xây dựng từ bán kính. Circle có một method có thể tính diện tích.
+
+# class Circle():
+#     def __init__(self,banKinh) -> None:
+#         self.__r = banKinh
+#     def radius(self):
+#         return m.pi * self._r**2
+    
+
+# --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
