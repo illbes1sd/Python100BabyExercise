@@ -857,3 +857,168 @@ def baitap66(n:int):
     else:
         return baitap66(n-1) + baitap66(n-2)
 
+# --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+# B67
+# Dãy Fibonacci được tính dựa trên công thức sau:
+# f(n)=0 nếu n=0
+# f(n)=1 nếu n=1
+# f(n)=f(n-1)+f(n-2) nếu n>1
+# Hãy viết chương trình sử dụng list comprehension để in dãy Fibonacci dưới dạng
+# tách biệt bằng dấu ",", n được người dùng nhập vào.
+# Ví dụ: Nếu n được nhập vào là 7 thì đầu ra của chương trình sẽ là: 0,1,1,2,3,5,8,13
+
+def baitap67(n:int):
+    return [1 if x==1 else 0 if x==0 else sum(baitap67(x-1)+baitap67(x-2)) for x in range(n+1)]
+
+
+
+# --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+# B68
+# Viết chương trình sử dụng generator để in số chẵn trong khoảng từ 0 đến n, cách nhau bởi dấu phẩy, n là số được nhập vào.
+# Ví dụ nếu n=10 được nhập vào thì đầu ra của chương trình là: 0,2,4,6,8,10
+
+def baitap68():
+    n = int(input("Nhập n: "))
+    for x in range(0,n+1,2):
+        yield str(x)
+
+# --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+# B69
+# Viết chương trình sử dụng generator để in số chia hết cho 5 và 7 giữa 0 và n, cách nhau bằng dấu phẩy, n được người dùng nhập vào.
+# Ví dụ: Nếu n=100 được nhập vào thì đầu ra của chương trình là: 0,35,70.
+
+def baitap69():
+    n = int(input("Nhập n: "))
+    for x in range(0,n+1):
+        if not x%7 and not x%5: yield str(x)
+
+# --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+# B70
+# Viết các lệnh assert để xác minh rằng tất cả các số trong list [2,4,6,8] là chẵn.
+def baitap70():
+    n = [2,4,6,8]
+    for x in n:
+        assert not x%2,f"{x} không phải số chẵn"
+
+
+# --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+# B71
+# Viết chương trình chấp nhận biểu thức toán học cơ bản do người dùng nhập vào từ bảng điều khiển và in kết quả ước lượng ra ngoài màn hình.
+# Ví dụ: Nếu chuỗi sau là đầu vào của chương trình:
+# 35 + 3
+# thì đầu ra sẽ lả:
+# 38
+# Gợi ý:
+#  Sử dụng eval() để ước lượng biểu thức
+
+def baitap71():
+    inputs = eval(input("Nhập biểu thức toán học : "))
+    return inputs
+
+
+# --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+# B72
+# Viết hàm tìm kiếm nhị phân để tìm các item trong một list đã được sắp xếp. Hàm sẽ trả lại chỉ số của phần tử được tìm thấy trong list.
+# Gợi ý:
+#  Sử dụng if/elif để giải quyết các điều kiện.
+# Code mẫu:
+# import math
+# def bin_search(li, element):
+# bottom = 0
+# Tài liệu được chia sẻ tại: http://nhasachtinhoc.blogspot.com
+# top = len(li)-1
+# index = -1
+# while top>=bottom and index==-1:
+# mid = int(math.floor((top+bottom)/2.0))
+# if li[mid]==element:
+# index = mid
+# elif li[mid]>element:
+# top = mid-1
+# else:
+# bottom = mid+1
+# return index
+# # Code by Quantrimang.com
+# li=[2,5,7,9,11,17,222]
+# print (bin_search(li,11))
+# print (bin_search(li,12))
+# Khi chạy code trên ta sẽ có kết quả đầu ra là 4 và -1, 4 là vị trí của 11 trong list li, và -
+# 1 nói lên rằng không có số 12 trong list li
+
+def baitap72(li,element):
+    return li.index(element) if element in li else -1
+
+
+# --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+# B73
+# Tạo một số thập phân ngẫu nhiên, có giá trị nằm trong khoảng từ 10 đến 100 bằng cách sử dụng module math của Python.
+import random
+def baitap73():
+    a = random.random()*100
+    while a<10:
+        a = random.random()*100
+    return a
+
+# --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+# B74
+# Tạo một số thập phân ngẫu nhiên, có giá trị nằm trong khoảng 5 đến 95, sử dụng module math của Python.
+
+def baitap74():
+    a = random.random()*95
+    while a<5:
+        a = random.random()*95
+    return a
+
+# --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+# B75
+# Viết chương trình xuất ra một số chẵn ngẫu nhiên trong khoảng 0 đến 10 (bao gồm cả 0 và 10), sử dụng module random và list comprehension
+
+def baitap75():
+    return random.choice([x for x in range(11) if not x%2])
+
+# --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+# B76
+# Vui lòng viết chương trình để xuất một số ngẫu nhiên, chia hết cho 5 và 7, từ 0 đến 200 (gồm cả 0 và 200), sử dụng module random và list comprehension.
+
+def baitap76():
+    return random.choice([x for x in range(201) if not x%5 and not x%7])
+
+# --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+# B77
+# Vui lòng viết chương trình để tạo một list với 5 số ngẫu nhiên từ 100 đến 200
+
+def baitap77():
+    return random.sample(range(100,201),5)
+
+# --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+# B78
+# Viết chương trình tạo ngẫu nhiên list gồm 5 số chẵn nằm trong đoạn [100;200]
+
+def baitap78():
+    return random.sample(range(100,201,2),5)
+
+# --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+# B79
+# Viết chương trình để tạo ngẫu nhiên một list gồm 5 số, chia hết cho 5 và 7, nằm trong đoạn [1;1000].
+
+def baitap79():
+    return random.sample([x for x in range(1,1001) if not x%5 and not x%7],5)
+
+# --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+# B80
+# Viết chương trình để in một số nguyên ngẫu nhiên từ 7 đến 15.
+# Số nguyễn là sô không có thành phần phân số 1,2,3 not 1.1 1.2
+def baitap80():
+    return random.randrange(7,16)
+    # bonus số nguyên tố chỉ chia hết cho 1 và chính nó
+    # return random.choice([x for x in range(7,16) if len([y for y in range(2,x) if not x%y])==0])
+
+
+# --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+# B81
+# Viết chương trình để nén và giải nén string ""hello world!hello world!hello world!hello world!"
+import zlib
+def baitap81():
+    s = "hello world!hello world!hello world!hello world!"
+    print(zlib.compress(s.encode("utf-8")))
+    print(zlib.decompress(zlib.compress(s.encode("utf-8"))))
+
